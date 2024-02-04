@@ -29,7 +29,7 @@ class Incident(models.Model):
     event_type = models.CharField(max_length=100)
     call = models.DateTimeField(blank=True, null=True)
     acknowledge = models.DateTimeField(blank=True, null=True)
-    reset = models.DateTimeField(blank=True, null=True)
+    reset = models.DateTimeField(blank=True, null=True) #123
 
     timestamp = models.DateTimeField(auto_now_add=True)
     # Add other fields as needed
