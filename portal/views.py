@@ -96,6 +96,7 @@ class LocationList(mixins.ListModelMixin,
         print(x,type(x))
         if x is not None:
             return Response({"id": x.id,"serial_number": x.serial_number, "name": x.name, "address": x.address},status=status.HTTP_200_OK)
+        print(request.data)
         return self.create(request, *args, **kwargs)
     
 class LocationDetail(mixins.RetrieveModelMixin,
@@ -314,6 +315,13 @@ class SubscriptionList(mixins.ListModelMixin,
         print(request, *args, **kwargs)
         location_obj = get_object_or_404(Location, serial_number=self.request.data["location"])
         self.request.data["location"] = location_obj.id
+        print(request.data["location"])
+        x=self.queryset.filter(location=location_obj.id,subscriber=self.request.data["subscriber"]).first()
+        print(x,type(x))
+        if x is not None:
+            return Response({"id": x.id,"location": x.location.pk, "subscriber": x.subscriber.pk, "timestamp": x.timestamp},status=status.HTTP_200_OK)
+        print("sssssssssssssssssssssssssss         ssss ")
+        print(request.data)
         return self.create(request, *args, **kwargs)
     
 class SubscriptionDetail(mixins.RetrieveModelMixin,

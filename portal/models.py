@@ -6,7 +6,7 @@ import uuid
 
 
 class Location(models.Model):
-    serial_number = models.CharField(max_length=100, unique=True,editable=False,)
+    serial_number = models.CharField(max_length=100,editable=True,)
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=255)
     # Add other fields as needed
