@@ -12,7 +12,7 @@ class Location(models.Model):
     # Add other fields as needed
 
     def __str__(self):
-        return self.name
+        return self.name #
 
 class Remote(models.Model):
     name = models.CharField(max_length=100)
